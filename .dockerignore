@@ -1,0 +1,15 @@
+.git
+.gitignore
+frontend/node_modules
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+*.venv
+tests/
+.pytest_cache/
+.DS_Store
+*.log
+backend/uploads
+.zen

@@ -1,0 +1,2 @@
+from .fakeNewsDetection import fake_news_pipeline_det
+from .fakeNewsGeneration import fake_news_pipeline_gen

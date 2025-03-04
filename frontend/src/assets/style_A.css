@@ -1,0 +1,100 @@
+.admin-container {
+  margin: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.admin-header {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2a3d4e;
+}
+
+.section-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 5px;
+  color: #2a3d4e; 
+}
+
+.fake-news-window {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+  margin-bottom: 15px;
+  height: 300px;
+  overflow-y: auto;
+}
+
+.fake-news-details h4 {
+  font-weight: bold;
+  color: #2a3d4e;
+}
+
+.fake-news-details p {
+  margin-top: 8px;
+  color: #444;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-button {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.nav-button:hover {
+  background-color: #2980b9;
+}
+
+.actions-section, .register-section, .logout-section {
+  margin-top: 10px;
+}
+
+.input-field {
+  padding: 5px;
+  margin: 8px 0;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.admin-button {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.admin-button:hover {
+  background-color: #2980b9;
+}
+
+.logout-button {
+  background-color: #e74c3c;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+.logout-button:hover {
+  background-color: #c0392b;
+}
+
+.message {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #2a3d4e;
+}
