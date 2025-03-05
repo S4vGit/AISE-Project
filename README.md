@@ -94,39 +94,50 @@ Once registered, the admin can log in using the frontend and create new journali
 ---
 
 ## System Components
+The system architecture is divided into four main components: **Frontend, Backend, Machine Learning Pipelines**, and **Database**. These components work together to allow users to generate, analyze, and detect fake news based on images.
 
-### 1. **Frontend**
-Developed with **React** and **Vite**, the frontend allows users to:
-- **Log in and manage user roles**
-- **Upload images and generate fake news**
-- **Test detection models**
-- **Perform administrative tasks**
+### 1. **Frontend (React + Vite)**
+The frontend is a web interface developed with **React** and **Vite**, responsible for user interaction with the system.
+### Features
+- **User authentication and management:**
+  - Allows login and registration with distinct user roles (`J`, `R`, `A`).
+  - Administrators can create new accounts and manage users.
+- **Image upload for fake news generation(`J`)**
+  - Journalists can upload images, triggering the AI pipeline to generate fake news.
+- **Image upload for fake news detection (`R`)**
+  - Researchers can will able to access to the probability of being fake of a generated news.
+- **Administrative management:**
+  - Administrator can access a dashboard to view users, uploaded images, and fake news detection reports.
 
 ### 2. **Backend**
 Built with **FastAPI**, the backend handles:
 - **User authentication and role-based access**
-- **APIs for fake news generation and detection**
-- **Database interactions with MongoDB**
-- **Integration with ZenML pipelines**
+  - Supports login and registration with password-based authentication.
+  - Implements role-based access control (`J`, `R`, `A`).
+- **Fake news management:**
+  - Provides APIs for image uploads, fake news generation (`J`) and fake news detection (`R`) requests.
+  - Allows retrieval of generated fake news and its analysis by researchers.
+- **Integration with ZenML pipelines:**
+  - Triggers pipelines for fake news generation and detection.
+  - Retrieves AI model outputs and updates the database.
 
 ### 3. **Machine Learning Pipelines**
-Utilizing **ZenML**, the AI modules function as follows:
-- **Fake News Generation Pipeline**:
-  - Extracts a description from the uploaded image
-  - Generates a fake news article
-  - Saves the data in the database
-- **Fake News Detection Pipeline**:
-  - Analyzes the generated news
-  - Evaluates its authenticity using an NLP model
-  - Stores the results in the database
+The ML pipelines are the core AI system responsible for fake news generation and detection. They are managed using **ZenML** to ensure modularity and traceability of the artifacts' output and pipelines.
+**Fake News Generation Pipeline**:
+- **Input:** An image uploaded by the user.
+- **Steps:**
+  1. **Image Captioning:** The AI model extracts a textual description of the image.
+  2. **Text Generation:** The description is passed to an NLP fine-tuned model, which generates a fake news article.
+  3. **Database Update:** The generated fake news is stored in the database and made available to the user.
+**Fake News Detection Pipeline**:
+- **Input:** An image uploaded by the user.
+- **Steps:**
+  1. **Image Captioning:** The AI model extracts a textual description of the image.
+  2. **Text Generation:** The description is passed to an NLP fine-tuned model, which 
+  3. **Oracle:** An Oracle analyzes the generated text and determines the probability that it is fake news through a weighted sum of the results of each of three detector which the oracle consists.
+  4. **Database Update:** The generated fake news and detection result are stored in the database and made available to the user.
 
 ### 4. **Database (MongoDB)**
 The database is structured into two main collections:
 - `users`: Stores user data, including ID, hashed password, and role (`J`, `R`, `A`).
-- `fake_news`: Contains images, their descriptions, and generated fake news entries.
-
----
-
-## Contributing
-If you would like to contribute to the project, feel free to open an issue or submit a pull request on [GitHub](https://github.com/S4vGit/AISE-Project).
-
+- `fake_news`: Contains images, their descriptions, generated fake news entries and detection result (in case of `R`).
