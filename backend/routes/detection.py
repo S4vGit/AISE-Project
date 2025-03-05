@@ -16,7 +16,7 @@ async def detect_news(
 ):
     """ Detect fake news from an image """
     if not current_user:
-        raise HTTPException(status_code=401, detail="Non autorizzato")
+        raise HTTPException(status_code=401, detail="Not authenticated")  # Check if the user is authenticated
 
     user_id = current_user["user_id"]  # Get the user
 
