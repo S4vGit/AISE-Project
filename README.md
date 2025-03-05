@@ -1,7 +1,7 @@
 # AISE Project
 
 ## Overview
-AISE Project (Artificial Intelligence for Synthetic Events) is a platform designed to generate, analyze, and detect fake news from images.
+AISE Project is a platform designed to generate, analyze, and detect fake news from images.
 The system is divided into three main sections:
 - **Journalists Section**: Allows users to generate fake news based on uploaded images.
 - **Researchers Section**: Enables testing the reliability of fake news detection models.
